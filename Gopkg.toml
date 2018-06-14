@@ -1,0 +1,54 @@
+# Gopkg.toml for this project.
+
+required = [
+    "github.com/spf13/cobra",
+    "github.com/labstack/echo",
+    "github.com/labstack/echo/middleware",
+    "github.com/jmoiron/sqlx",
+    "github.com/mattn/go-sqlite3",
+    "golang.org/x/crypto/pbkdf2",
+    "github.com/kelseyhightower/envconfig",
+    "github.com/dgrijalva/jwt-go",
+    "github.com/nicksnyder/go-i18n/v2/i18n",
+    "github.com/pelletier/go-toml",
+]
+
+[[constraint]]
+   name = "github.com/spf13/cobra"
+   version = "0.0.3"
+
+[[constraint]]
+   name = "github.com/labstack/echo"
+   version = "3.3.5"
+
+[[constraint]]
+   branch = "master"
+   name = "github.com/jmoiron/sqlx"
+
+[[constraint]]
+   name = "github.com/mattn/go-sqlite3"
+   version = "1.7.0"
+
+[[constraint]]
+   branch = "master"
+   name = "golang.org/x/crypto"
+
+[[constraint]]
+  name = "github.com/dgrijalva/jwt-go"
+  version = "3.2.0"
+
+[[constraint]]
+  branch = "master"
+  name = "github.com/kelseyhightower/envconfig"
+
+[[constraint]]
+  branch = "master"
+  name = "github.com/nicksnyder/go-i18n"
+
+[[constraint]]
+  name = "github.com/pelletier/go-toml"
+  version = "1.2.0"
+
+[prune]
+  go-tests = true
+  unused-packages = true

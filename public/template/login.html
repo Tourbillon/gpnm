@@ -1,0 +1,37 @@
+{{ template "header" .}}
+
+<style type="text/css">
+  body > .grid {
+    height: 100%;
+  }
+</style>
+
+<div class="ui middle aligned center aligned stackable grid">
+  <div class="four wide column">
+    <h1>GPNM</h1>
+  {{if .ShowError }}
+    <div class="ui negative small message">
+      <p>{{tr "user_or_passwd_error"}}</p>
+    </div>
+  {{ end }}
+    <form id="login-from" class="ui large form" action="/gpnm/account/login"
+          method="post">
+      <div class="field">
+        <div class="ui left icon input">
+          <i class="user icon"></i>
+          <input type="text" name="username" placeholder="{{tr "username"}}">
+        </div>
+      </div>
+      <div class="field">
+        <div class="ui left icon input">
+          <i class="lock icon"></i>
+          <input type="password" name="password"
+                 placeholder="{{tr "password"}}">
+        </div>
+      </div>
+      <div class="ui fluid large green submit button">{{tr "login"}}</div>
+    </form>
+  </div>
+</div>
+
+{{ template "footer" .}}

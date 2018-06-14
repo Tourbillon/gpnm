@@ -1,0 +1,36 @@
+{{define "nav"}}
+
+<div class="ui borderless main menu">
+  <div class="ui page grid">
+    <div class="column">
+      <div class="ui text container">
+        <a href="/gpnm/package"><span class="item"><h2>GPNM</h2></span></a>
+      </div>
+    </div>
+    <div class="right menu">
+      <div class="item">
+        <div class="ui icon input">
+          <input type="text" placeholder="Search...">
+          <i class="search link icon"></i>
+        </div>
+      </div>
+      <div class="item">
+        <a class="item" href="/gpnm/package/add">
+          <i class="add icon"></i>
+        </a>
+      </div>
+      <div class="item">
+        <div class="ui dropdown item">
+        {{tr "more"}}
+          <i class="dropdown icon"></i>
+          <div class="menu">
+            <a class="item" href="/gpnm/account/setting">{{tr "setting"}}</a>
+            <a class="item" href="/gpnm/account/logout">{{tr "logout"}}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{end}}

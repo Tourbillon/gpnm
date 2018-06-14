@@ -1,0 +1,79 @@
+{{ template "header" .}}
+{{ template "nav" .}}
+
+<div class="ui large aligned center aligned stackable grid">
+  <div class="row">
+    <h2>{{tr "pkg_list"}}</h2>
+  </div>
+  <div class="ten wide column">
+    <table class="ui celled table">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Package Name</th>
+        <th>Root Repo Url</th>
+        <th>Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      {{range $k, $v := .Packages}}
+      <tr>
+        <td>{{$v.Id}}</td>
+        <td>{{$v.Name}}</td>
+        <td>{{$v.RootRepoUrl}}</td>
+        <td>
+          <a href="/gpnm/package/modify?id={{$v.Id}}">
+            <i class="black link edit icon"></i>
+          </a>
+          <i class="black link trash icon"
+             onclick="showDeleteModal({{$v.Id}})"></i>
+        </td>
+      </tr>
+      {{end}}
+      </tbody>
+    {{if gt .TotalPages 1}}
+      <tfoot>
+      <tr>
+        <th colspan="4">
+          <div class="ui right floated pagination menu">
+          {{ $prev := minus .CurrentPage 1}}
+          {{ $next := add .CurrentPage 1}}
+          {{ if ne .CurrentPage 1 }}
+            <a class="icon item"
+               href="/gpnm/package/home?pagination={{$prev}}">
+              <i class="left chevron icon"></i>
+              <div class="ui text">&nbsp {{tr "prev"}}</div>
+            </a>
+          {{end}}
+          {{ if le .CurrentPage .TotalPages }}
+            <a class="icon item"
+               href="/gpnm/package/home?pagination={{$next}}">
+              <div class="ui text">{{tr "next"}} &nbsp</div>
+              <i class="right chevron icon"></i>
+            </a>
+          {{end}}
+          </div>
+        </th>
+      </tr>
+      </tfoot>
+    {{end}}
+    </table>
+  </div>
+</div>
+
+<div id="delete-modal" class="ui mini modal">
+  <div class="header">{{tr "notice"}}</div>
+  <div class="content">
+  {{tr "delete_msg"}}
+  </div>
+  <div class="actions">
+    <form method="post" action="/gpnm/package/delete">
+      <input name="id" type="hidden">
+      <input type="submit" id="delete-modal-cancel" value="{{tr "no"}}"
+             class="ui green button"/>
+      <input type="submit" value="{{tr "yes"}}" class="ui red button"/>
+    </form>
+  </div>
+</div>
+
+{{ template "footer" .}}

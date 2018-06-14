@@ -1,0 +1,61 @@
+{{ template "header" .}}
+{{ template "nav" .}}
+
+<div class="ui large aligned center aligned stackable grid">
+  <div class="eight wide left aligned column">
+    <div class="ui hidden divider"></div>
+    <div class="ui top attached tabular menu">
+      <a class="item active" data-tab="profile">{{tr "account_setting"}}</a>
+    {{if .IsAdmin }}
+      <a class="item" data-tab="user">{{tr "user_management"}}</a>
+    {{end}}
+    </div>
+    <div class="ui bottom attached tab segment active" data-tab="profile">
+      <div class="ui hidden divider"></div>
+    {{if .ShowError }}
+      <div class="ui negative small message">
+        <p>{{tr "field_is_empty"}}</p>
+      </div>
+    {{end}}
+      <form id="setting-from" class="ui form" action="/gpnm/account/setting"
+            method="post">
+        <div class="field">
+          <label>{{tr "old_passwd"}}</label>
+          <input type="password" name="old_password"
+                 placeholder="{{tr "old_passwd"}}">
+        </div>
+        <div class="field">
+          <label>{{tr "new_passwd"}}</label>
+          <input type="password" name="new_password"
+                 placeholder="{{tr "new_passwd"}}">
+        </div>
+        <div class="ui divider"></div>
+        <div class="inline field">
+          <div class="ui green submit button">{{tr "confirm"}}</div>
+        </div>
+      </form>
+    </div>
+  {{ if .IsAdmin }}
+    <div class="ui bottom attached tab segment" data-tab="user">
+      <div class="ui hidden divider"></div>
+      <form id="add-user-from" class="ui form" action="/gpnm/account/add"
+            method="post">
+        <div class="field">
+          <label>{{tr "username"}}</label>
+          <input type="text" name="username" placeholder="{{tr "username"}}">
+        </div>
+        <div class="field">
+          <label>{{tr "password"}}</label>
+          <input type="text" name="password" placeholder="{{tr "password"}}">
+        </div>
+        <div class="ui divider"></div>
+        <div class="inline field">
+          <div class="ui green submit button">{{tr "confirm"}}</div>
+        </div>
+      </form>
+    </div>
+  {{end}}
+  </div>
+</div>
+
+{{ template "footer" .}}

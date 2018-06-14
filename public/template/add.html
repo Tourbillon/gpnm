@@ -1,0 +1,33 @@
+{{ template "header" .}}
+{{ template "nav" .}}
+
+<div class="ui large aligned center aligned stackable grid">
+  <div class="row">
+    <h2>{{tr "add_new_pkg"}}</h2>
+  </div>
+  <div class="eight wide left aligned column">
+  {{if .ShowError }}
+    <div class="ui negative small message">
+      <p>{{tr "field_is_empty"}}</p>
+    </div>
+  {{end}}
+    <form id="add-pkg-from" class="ui form" action="/gpnm/package/add"
+          method="post">
+      <div class="field">
+        <label>{{tr "package_name"}}</label>
+        <input type="text" name="package_name"
+               placeholder="{{tr "pkg_name_tips"}}">
+      </div>
+      <div class="field">
+        <label>{{tr "root_repo_url"}}</label>
+        <input type="text" name="root_repo_url"
+               placeholder="{{tr "root_repo_url_tips"}}">
+      </div>
+      <div class="inline field">
+        <div class="ui green submit button">{{tr "submit"}}</div>
+      </div>
+    </form>
+  </div>
+</div>
+
+{{ template "footer" .}}
