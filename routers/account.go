@@ -42,14 +42,15 @@ func DoLogin(c echo.Context) error {
 		return showLoginError(c)
 	}
 
-	cookie := new(http.Cookie)
-	cookie.Name = setting.AccessToken
-	cookie.Value = accessToken
-	cookie.Path = "/gpnm"
-	cookie.Expires = expires
-	cookie.Secure = !build.Debug
-	cookie.HttpOnly = true
-	c.SetCookie(cookie)
+	cookie := http.Cookie{
+		Name:     setting.AccessToken,
+		Value:    accessToken,
+		Path:     "/gpnm",
+		Expires:  expires,
+		Secure:   !build.Debug,
+		HttpOnly: true,
+	}
+	c.SetCookie(&cookie)
 
 	return c.Redirect(http.StatusFound, "/gpnm/package/home")
 }

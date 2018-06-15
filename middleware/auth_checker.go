@@ -19,8 +19,8 @@ func AuthChecker() echo.MiddlewareFunc {
 	}
 }
 
-// AuthCheckerWithLogin will check if authorization available when login.
-func AuthCheckerWithLogin() echo.MiddlewareFunc {
+// LoginAuthChecker will check if authorization available when login.
+func LoginAuthChecker() echo.MiddlewareFunc {
 	return func(handlerFunc echo.HandlerFunc) echo.HandlerFunc {
 		return func(c echo.Context) error {
 			return checkCookie(c, handlerFunc, true)

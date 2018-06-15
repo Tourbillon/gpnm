@@ -8,6 +8,7 @@ import (
 	"github.com/kelseyhightower/envconfig"
 )
 
+// EnvConfig defines all available environment variables.
 type EnvConfig struct {
 	Address   string `envconfig:"API_ADDRESS" default:"0.0.0.0:50000"`
 	DbPath    string `envconfig:"DB_PATH" default:"gpnm.db"`

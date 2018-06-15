@@ -20,14 +20,13 @@ func init() {
 	}
 }
 
-// I18n check the request to get wanted language,
-// then set localizer for render to use.
+// I18n check the request to get accepted language, then set
+// localizer for renderer to use.
 func I18n() echo.MiddlewareFunc {
 	return func(handlerFunc echo.HandlerFunc) echo.HandlerFunc {
 		return func(c echo.Context) error {
-			lang := c.FormValue("lang")
 			accept := c.Request().Header.Get("Accept-Language")
-			localizer := i18n.NewLocalizer(bundle, lang, accept)
+			localizer := i18n.NewLocalizer(bundle, accept)
 			c.Set("localizer", localizer)
 			return handlerFunc(c)
 		}
