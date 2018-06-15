@@ -75,6 +75,7 @@ func (u *User) EncryptPassword() {
 	u.Password = fmt.Sprintf("%x", key)
 }
 
+// ValidatePassword validate user's password.
 func (u *User) ValidatePassword(password string) bool {
 	user := User{
 		Password: password,

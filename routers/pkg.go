@@ -137,7 +137,7 @@ func ShowAllPackages(c echo.Context) error {
 	}
 	totalPages := totalPkgs / pageCount
 	if totalPkgs%pageCount > 1 {
-		totalPages ++
+		totalPages++
 	}
 
 	return c.Render(http.StatusOK, "home.html", map[string]interface{}{

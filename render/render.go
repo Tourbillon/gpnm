@@ -21,7 +21,7 @@ func NewRenderer() *TemplateRender {
 	funcMap := template.FuncMap{
 		"minus": r.minus,
 		"add":   r.add,
-		"tr":    r.i18n,
+		"tr":    r.translate,
 	}
 	r.tpl = template.Must(
 		template.New("").Funcs(funcMap).ParseGlob("public/template/*.html"))
@@ -39,7 +39,7 @@ func (t *TemplateRender) Render(w io.Writer, name string,
 	return t.tpl.ExecuteTemplate(w, name, data)
 }
 
-func (t *TemplateRender) i18n(id string) string {
+func (t *TemplateRender) translate(id string) string {
 	if t.localizer == nil {
 		return id
 	}

@@ -38,7 +38,8 @@ func runWebServer(_ *cobra.Command, _ []string) error {
 	e.Renderer = render.NewRenderer()
 
 	e.Static("/gpnm/js", "public/js")
-	e.File("/favicon.ico", "public/favicon.ico")
+	e.Static("/gpnm/css", "public/css")
+	e.File("/favicon.ico", "public/image/favicon.ico")
 
 	gpnm := e.Group("/gpnm")
 
@@ -53,7 +54,7 @@ func runWebServer(_ *cobra.Command, _ []string) error {
 	pkg.POST("/modify", routers.DoModifyPackage)
 
 	account := gpnm.Group("/account")
-	account.GET("/login", routers.ShowLogin, mw.AuthCheckerWithLogin())
+	account.GET("/login", routers.ShowLogin, mw.LoginAuthChecker())
 	account.POST("/login", routers.DoLogin)
 	account.GET("/logout", routers.DoLogout)
 	accountToken := account.Group("", mw.AuthChecker())

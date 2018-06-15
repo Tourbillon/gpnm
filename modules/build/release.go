@@ -4,6 +4,6 @@
 
 package build
 
-var (
+const (
 	Debug = false
 )

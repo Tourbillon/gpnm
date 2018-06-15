@@ -14,6 +14,14 @@ $(document)
         }
       });
 
+    $('#login-from').on('keyup keypress', function (e) {
+      var keyCode = e.keyCode || e.which;
+      if (keyCode === 13) {
+        showLoading();
+        return false;
+      }
+    });
+
     $('#add-pkg-from')
       .form({
         fields: {
@@ -54,4 +62,13 @@ $(document)
 function showDeleteModal(id) {
   $('#delete-modal').find('input[name="id"]').val(id);
   $('#delete-modal').modal('show');
+}
+
+function showLoading() {
+  $('#loading').dimmer('show')
+}
+
+function login() {
+  showLoading();
+  $('#login-from').form().submit()
 }

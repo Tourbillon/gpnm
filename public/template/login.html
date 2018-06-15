@@ -1,12 +1,6 @@
 {{ template "header" .}}
 
-<style type="text/css">
-  body > .grid {
-    height: 100%;
-  }
-</style>
-
-<div class="ui middle aligned center aligned stackable grid">
+<div id="login-grid" class="ui middle aligned center aligned stackable grid">
   <div class="four wide column">
     <h1>GPNM</h1>
   {{if .ShowError }}
@@ -29,8 +23,12 @@
                  placeholder="{{tr "password"}}">
         </div>
       </div>
-      <div class="ui fluid large green submit button">{{tr "login"}}</div>
+      <div class="ui fluid large green button"
+           onclick="login()">{{tr "login"}}</div>
     </form>
+  </div>
+  <div id="loading" class="ui dimmer">
+    <div class="ui text loader">{{tr "loading"}}</div>
   </div>
 </div>
 

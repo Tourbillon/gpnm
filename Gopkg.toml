@@ -10,7 +10,6 @@ required = [
     "github.com/kelseyhightower/envconfig",
     "github.com/dgrijalva/jwt-go",
     "github.com/nicksnyder/go-i18n/v2/i18n",
-    "github.com/pelletier/go-toml",
 ]
 
 [[constraint]]
@@ -44,10 +43,6 @@ required = [
 [[constraint]]
   branch = "master"
   name = "github.com/nicksnyder/go-i18n"
-
-[[constraint]]
-  name = "github.com/pelletier/go-toml"
-  version = "1.2.0"
 
 [prune]
   go-tests = true
