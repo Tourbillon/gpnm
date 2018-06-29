@@ -18,6 +18,9 @@ func init() {
 	if _, err := bundle.LoadMessageFile("public/locale/active.zh.json"); err != nil {
 		log.Fatalf("%v", err)
 	}
+	if _, err := bundle.LoadMessageFile("public/locale/active.en.json"); err != nil {
+		log.Fatalf("%v", err)
+	}
 }
 
 // I18n check the request to get accepted language, then set

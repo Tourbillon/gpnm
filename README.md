@@ -5,12 +5,7 @@ Self-hosted golang package name manager like `gopkg.in` service. GPNM will help 
 Usage
 ====
 
-``` shell
-$ git clone https://github.com/Tourbillon/gpnm.git
-$ cd gpnm && go run main.go start
-```
-
-Or you can start it with `docker`
+Start it with `docker`
 
 ```shell
 $ sudo docker pull anbillon/gpnm:latest
